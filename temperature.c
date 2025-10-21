@@ -27,4 +27,6 @@ int main(){
     }else{
         printf("Invalid choice! please select C or F\n");
     }
+
+    return 0;
 }
