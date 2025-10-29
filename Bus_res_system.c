@@ -37,11 +37,45 @@ void displayUserMenu(){
 }
 
 // function to perform user login
-
-
-
+int loginUser(struct User users[], int numUsers, char username[], char password[]){
+    for(int i = 0; i < numUsers; i++){
+        if(strcmp(users[i].username, username) == 0 && strcmp(users[i].password, password) == 0){
+            return i; // return the index of the logged-in user
+        }
+    }
+    return -1; // return -1 if login fails
+}
 
 //function to book tickets
+void bookTicket(struct Bus buses[], int numBuses){
+    printf("\nEnter Bus Number: ");
+    int busNumber;
+    scanf("%d", &busNumber);
+
+    //Find the bus with the given busNumber
+    int busIndex = -1;
+    for(int i = 0; i < numBuses; i++){
+        if(buses[i].busNumber){
+            busIndex = i;
+            break;
+        }
+    }
+
+    if(busIndex == -1){
+        printf("Bus with bus number %d not found.\n", busNumber);
+    }else{
+        printf("Enter Number of Seats: ");
+        int seatsToBook;
+        scanf("%d", &seatsToBook);
+
+        if(buses[busIndex].availableSeats < seatsToBook){
+            printf("Sorry, only %d seats are available.\n", buses[busIndex].availableSeats);
+        }else{
+            buses[busIndex].availableSeats -= seatsToBook;
+            printf("Booking successful! %d seats booked on Bus Number %d.\n", seatsToBook, busNumber);
+        }
+    }
+}
 
 
 
