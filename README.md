@@ -1,4 +1,4 @@
-# C Programming for Cybersecurity
+# C Programming
 
 A comprehensive collection of C programs developed during my Master's program. This repository serves as a reference for low-level programming concepts essential for deep understanding.
 
