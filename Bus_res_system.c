@@ -77,12 +77,36 @@ void bookTicket(struct Bus buses[], int numBuses){
     }
 }
 
-
-
 // function to cancel tickets
+void cancelTicket(struct Bus buses[], int numBuses){
+    printf("/nEnter Bus Number: ");
+    int busNumber;
+    scanf("%d", &busNumber);
 
+    // Find the bus with the given busNumber
+    int busIndex = -1;
+    for (int i = 0; i < numBuses; i++){
+        if(buses[i].busNumber == busNumber){
+            busIndex = i;
+            break;
+        }
+    }
 
+    if (busIndex = -1){
+        printf("Bus with Bus Number %d not found. \n",busNumber);
+    }else{
+        printf("Enter number of Seats to Cancel: ");
+        int seatsToCancel;
+        scanf("%d", &seatsToCancel);
 
+        if(seatsToCancel > (buses[busIndex].totalSeats - buses[busIndex].availableSeats)){
+            printf("Error: you can't cancel more seats than were booked.\n");
+        }else{
+            buses[busIndex].availableSeats += seatsToCancel;
+            printf("cancellation successful! %d seats canceled on Bus number %d.\n", seatsToCancel,busNumber);
+        }
+    }
+}
 
 //function to check bus status
 
