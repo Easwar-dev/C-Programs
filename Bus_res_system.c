@@ -109,7 +109,30 @@ void cancelTicket(struct Bus buses[], int numBuses){
 }
 
 //function to check bus status
+void checkBusStatus(struct Bus buses[], int numBuses){
+    printf("\nEnter Bus Number: ");
+    int busNumber;
+    scanf("%d", &busNumber);
 
+    //Find the bus with the given busNumber
+    int busIndex = -1;
+    for (int i = 0; i < numBuses; i++){
+        if(buses[i].busNumber == busNumber){
+            busIndex = i;
+            break;
+        }
+    }
 
+    if(busIndex != -1){
+        printf("\nBus Number: %d\n",buses[busIndex].busNumber);
+        printf("Source: %s\n", buses[busIndex].source);
+        printf("Destination: %s\n", buses[busIndex].destination);
+        printf("total seats: %d\n", buses[busIndex].totalSeats);
+        printf("Available seats: %d\n", buses[busIndex].availableSeats);
+        printf("Fare: %.2f\n", buses[busIndex].fare);
+    }else{
+        printf("Bus with Bus number %d not found.\n", busNumber);
+    }
+}
 
 //main function 
